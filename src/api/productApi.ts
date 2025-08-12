@@ -1,8 +1,12 @@
-// src/api/productApi.js
+// src/api/productApi.ts
+
+import apiInstance from ".";
+
 export const fetchProducts = async () => {
-    const res = await fetch("https://api.escuelajs.co/api/v1/products");
-    if (!res.ok) {
+    try {
+        const response = await apiInstance.get("/products");
+        return response.data;
+    } catch (error) {
         throw new Error("Failed to fetch products");
     }
-    return res.json();
 };
